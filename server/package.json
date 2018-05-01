@@ -1,0 +1,59 @@
+{
+  "name": "news-feed-server",
+  "version": "0.0.1",
+  "description": "Server for news-feed project",
+  "repository": "https://github.com/jaiowl/news-feed/server",
+  "author": "Jamie Porter",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=9.0.0",
+    "npm": ">=5.0.0"
+  },
+  "scripts": {
+    "prestart": "npm run -s build",
+    "start": "node dist/index.js",
+    "dev": "npm run watch",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run build:ts && npm run lint && node deployToDist.js",
+    "build:ts": "tsc",
+    "test": "jest --forceExit --coverage --verbose",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch:ts": "tsc -w",
+    "watch:node": "nodemon dist/index.js --exec \"node -r dotenv/config\""
+  },
+  "keywords": [],
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "debug": "^3.1.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "morgan-debug": "^2.0.0",
+    "pug": "^2.0.0-beta11"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/debug": "0.0.30",
+    "@types/dotenv": "^4.0.3",
+    "@types/express": "^4.11.1",
+    "@types/jest": "^22.2.3",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^10.0.2",
+    "@types/pug": "^2.0.4",
+    "@types/shelljs": "^0.7.9",
+    "@types/supertest": "^2.0.4",
+    "concurrently": "^3.5.1",
+    "jest": "^22.4.3",
+    "mkdirp": "^0.5.1",
+    "nodemon": "^1.12.1",
+    "rimraf": "^2.6.2",
+    "shelljs": "^0.8.1",
+    "supertest": "^3.0.0",
+    "ts-jest": "^22.4.4",
+    "ts-node": "^6.0.2",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3"
+  }
+}
