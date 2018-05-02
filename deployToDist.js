@@ -2,7 +2,7 @@ const shelljs = require('shelljs');
 
 shelljs.cp('-rf', 'server/dist/*', 'dist/');
 shelljs.cp('-rf', 'server/dist/.*', 'dist/');
-shelljs.cp('.env.config', 'dist/.env');
+shelljs.cat('.env.config', '.env').to('dist/.env');
 
 // Install Production
 shelljs.cd('dist');
