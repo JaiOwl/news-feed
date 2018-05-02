@@ -31,7 +31,8 @@ export class NewsApiOrgClient {
       const response: INewsApiResponse = await this.newsApiClient.v2.topHeadlines (
         {
           q: options.queryString,
-          country: 'gb'
+          country: 'gb',
+          pageSize: 100
         }
       );
       debugLogger(`Response for TopHeadlines with q:'${options.queryString} => ${response.status}'`, response);

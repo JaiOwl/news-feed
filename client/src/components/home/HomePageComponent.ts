@@ -8,8 +8,15 @@ import { INewsApiArticle } from '../../models/INewsApiArticle';
 const warnLogger = debug('warn:HomePage');
 // const errorLogger = debug('error:HomePage');
 
+const NEWS_UPDATE_INTERVAL = 60 * 1000;
+
 export default Vue.extend({
   name: 'Home',
+  data: function (): { updateInterval: number | undefined } {
+    return {
+      updateInterval: undefined
+    };
+  },
   components: {
     'NewsApiArticle': NewsApiArticle
   },
@@ -21,7 +28,7 @@ export default Vue.extend({
           (a: INewsApiArticle, b: INewsApiArticle) => {
             const dateA: number = new Date(a.publishedAt).getTime();
             const dateB: number = new Date(b.publishedAt).getTime();
-            return (dateA - dateB); // Reverse sort
+            return (dateB - dateA); // Reverse sort
           }
       );
     }
@@ -33,5 +40,22 @@ export default Vue.extend({
           warnLogger(`Failed to update Current News Articles => ${error}`);
         }
       );
+    this.updateInterval = setInterval(
+      () => {
+        this.$store.dispatch('updateCurrentNewsArticles')
+        .catch(
+          (error) => {
+            warnLogger(`Failed to update Current News Articles => ${error}`);
+          }
+        );
+      },
+      NEWS_UPDATE_INTERVAL
+    );
+  },
+  destroyed () {
+    if ( this.updateInterval !== undefined ) {
+      clearInterval(this.updateInterval);
+      delete this.updateInterval;
+    }
   }
 });

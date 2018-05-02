@@ -31,7 +31,9 @@ declare module 'newsapi' {
         q?: string,
         category?: string,
         language?: string,
-        country?: string
+        country?: string,
+        pageSize?: number,
+        page?: number
       } ): Promise<INewsApiResponse>
     };
   }
