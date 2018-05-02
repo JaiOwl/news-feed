@@ -8,7 +8,7 @@ const warnLogger = debug('warn:NewsApiArticle');
 
 export default Vue.extend({
   name: 'NewsApiArticle',
-  props: [ 'NewsApiArticle' ],
+  props: [ 'newsApiArticle' ],
   components: {},
   computed: {}
 });
