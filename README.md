@@ -46,9 +46,9 @@ Brief explanation for choosen tools/frameworks:
 
 ## Tasks
 
-- [ ] Add NewsAPI client to server
-- [ ] Provide Server API to retrieve list of top headline news with text filtering, category filtering, and source filtering options
-- [ ] Provide Client page to show all top news headlines for UK in English
+- [X] Add NewsAPI client to server
+- [X] Provide Server API to retrieve list of top headline news with text filtering, category filtering, and source filtering options
+- [X] Provide Client page to show all top news headlines for UK in English
 - [ ] Provide manual refresh button alongside interval poll to update current results
 - [ ] Provide client filter option based on query string
 - [ ] Provide client filter option based on category(s)
@@ -65,3 +65,21 @@ Brief explanation for choosen tools/frameworks:
 * Provide date filtering
 * Provide sort ordering
 * Provide solution to list quantity (infinite scroll or pagination the likely options)
+
+## Progress
+
+After ~2.5hrs of work, the user can access the page and display the current top 20 UK news headlines provided by NewsAPI. These stories are rendered in a flex grid format with non-uniform size cards. News is updated every minute and is sorted most recent first. Unfortunately did not get to do unit tests for GUI components due to doing a spike to get the items rendered first and then running out of time. The server side is also lacking in sensible testing.
+
+Current known issues:
+
+* using the nodejs NewsAPI library is not properly submitting requests (ie. pageSize is currently set to 100 but only 20 returned) - would need investigating.
+* stories with no image will display as columns instead of thumbnails.
+
+## Usage
+
+Create a new *.env* file in the root directory and add your News API key like so:
+
+`NEWS_API_ORG_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX`
+
+To run:
+`npm start`
