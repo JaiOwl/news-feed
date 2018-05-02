@@ -81,5 +81,10 @@ Create a new *.env* file in the root directory and add your News API key like so
 
 `NEWS_API_ORG_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXX`
 
+To Install:
+`npm install`
+
 To run:
 `npm start`
+
+Site will then be available on port 8080 using default config.
