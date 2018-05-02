@@ -1,0 +1,39 @@
+{
+  "name": "news-api",
+  "version": "0.0.1",
+  "description": "Personal prortfolio project to display new stories.",
+  "main": "dist/index.js",
+  "scripts": {
+    "postinstall": "npm-run-all postinstall:*",
+    "postinstall:client": "cd client && npm install && cd ../",
+    "postinstall:server": "cd server && npm install && cd ../",
+    "clean": "rimraf dist && npm-run-all clean:*",
+    "clean:client": "cd client && npm run clean && cd ../",
+    "clean:server": "cd server && npm run clean && cd ../",
+    "build": "npm run clean && mkdirp dist && npm-run-all build:* && node deployToDist.js",
+    "build:client": "cd client && npm run build && cd ../",
+    "build:server": "cd server && npm run build && cd ../",
+    "test": "npm-run-all test:*",
+    "test:client": "cd client && npm test && cd ../",
+    "test:server": "cd server && npm test && cd ../",
+    "prestart": "npm run -s build",
+    "start": "cd dist && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaiOwl/news-api.git"
+  },
+  "author": "Jamie Porter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JaiOwl/news-api/issues"
+  },
+  "homepage": "https://github.com/JaiOwl/news-api#readme",
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "shelljs": "^0.8.1",
+    "vue-cli": "^2.9.3"
+  }
+}
