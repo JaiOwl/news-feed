@@ -34,7 +34,11 @@ const routes = new Routes();
 app.use('/', routes.router );
 
 // Default index
-app.use('^(?!/api/*).*', express.static(path.join(__dirname, PUBLIC_DIR), { index: 'index.html' }) );
+app.get('^(?!/api/*)*',
+  ( req: Request, res: Response ) => {
+    res.sendfile( path.join( __dirname, PUBLIC_DIR, '/index.html' ) );
+  }
+);
 
 // Catch 404 and forward to error handler
 app.use(
