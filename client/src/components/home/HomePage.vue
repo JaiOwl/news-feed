@@ -3,7 +3,10 @@
     <div class="py-2 px-2">
       <div class="container-fluid">
         <transition-group name="tile-list" tag="div" class="row">
-          Home Page
+          <div class="col-sm-12 col-xl-4 col-lg-6 col-md-6 p-0 m-0" v-for="item in currentNewsArticlesAsArray" :key="item.url">
+            <NewsApiArticle :newsApiArticle="item">
+            </NewsApiArticle>
+          </div>
         </transition-group>
       </div>
     </div>

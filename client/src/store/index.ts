@@ -3,9 +3,13 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+import NewsApiStore from './modules/NewsApiStore';
+
 export default new Vuex.Store(
   {
-    modules: {},
+    modules: {
+      NewsApiStore: NewsApiStore
+    },
     strict: true
   }
 );
