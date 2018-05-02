@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express';
 import packageJson from '../package.json';
-import { ApiRoutes } from './controllers/api';
+import { ApiRoutes } from './controllers/ApiRoutes';
 
 export class Routes {
   private routes: Router;

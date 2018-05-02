@@ -1,6 +1,9 @@
+import dotenv from 'dotenv';
 import request from 'supertest';
-import app from '../../src/app';
 import packageJson from '../../package.json';
+
+dotenv.config();
+import app from '../../src/App';
 
 describe('GET /api/version',
   () => {

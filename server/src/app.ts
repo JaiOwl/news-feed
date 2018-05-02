@@ -7,10 +7,6 @@ import { Routes } from './routes';
 import { ExpressError } from './models/ExpressError';
 
 const {
-  COIN_MARKER_API_UPDATE_INTERVAL = (60 * 1000)
-} = process.env;
-
-const {
   PUBLIC_DIR = '../public',
   VIEWS_DIR = '../views'
 } = process.env;
